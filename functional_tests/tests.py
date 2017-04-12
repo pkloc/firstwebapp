@@ -6,7 +6,7 @@ import time
 
 class NewVisitorTest(LiveServerTestCase):
 
-	MAX_WAIT_SECONDS = 10
+	MAX_WAIT_SECONDS = 3
 
 	def setUp(self):
 		self.browser = webdriver.Firefox()
@@ -24,7 +24,7 @@ class NewVisitorTest(LiveServerTestCase):
 				return
 			except (AssertionError, WebDriverException) as e:
 				if time.time() - start_time > self.MAX_WAIT_SECONDS:
-					raise effect
+					raise e
 				time.sleep(0.5)
 	
 	def test_can_start_a_list_for_one_user(self):

@@ -12,6 +12,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 		self.browser = webdriver.Firefox()
 		
 	def tearDown(self):
+		self.browser.refresh()
 		self.browser.quit()
 		
 	def wait_for_row_in_list_table(self, row_text):
@@ -80,6 +81,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 		# Now a new user, Francis, comes along to the site.
 		## We use a new browser session to make sure that no information
 		## of Edith's is coming through from cookies etc
+		self.browser.refresh()
 		self.browser.quit()
 		self.browser = webdriver.Firefox()
 		
